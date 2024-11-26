@@ -1,0 +1,37 @@
+﻿@model CarInsurance.ViewModels.ViewInsuree
+
+@{
+    ViewData["Title"] = "Preview";
+}
+
+
+<h2>Confirm Your Details</h2>
+
+<div>
+    <p><strong>First Name:</strong> @Model.FirstName</p>
+    <p><strong>Last Name:</strong> @Model.LastName</p>
+    <p><strong>Email Address:</strong> @Model.EmailAddress</p>
+    <p><strong>Date of Birth:</strong> @Model.DateOfBirth</p>
+    <p><strong>Car Year:</strong> @Model.CarYear</p>
+    <p><strong>Car Make:</strong> @Model.CarMake</p>
+    <p><strong>Car Model:</strong> @Model.CarModel</p>
+    <p><strong>DUI:</strong> @Model.DUI</p>
+    <p><strong>Speeding Tickets:</strong> @Model.SpeedingTickets</p>
+    <p><strong>Coverage Type:</strong> @Model.CoverageType</p>
+    <p><strong>Quote:</strong> @Model.Quote</p>
+</div>
+
+<form asp-action="Create">
+    @Html.HiddenFor(m => m.FirstName)
+    @Html.HiddenFor(m => m.LastName)
+    @Html.HiddenFor(m => m.EmailAddress)
+    @Html.HiddenFor(m => m.DateOfBirth)
+    @Html.HiddenFor(m => m.CarYear)
+    @Html.HiddenFor(m => m.CarMake)
+    @Html.HiddenFor(m => m.CarModel)
+    @Html.HiddenFor(m => m.DUI)
+    @Html.HiddenFor(m => m.SpeedingTickets)
+    @Html.HiddenFor(m => m.CoverageType)
+    @Html.HiddenFor(m => m.Quote)
+    <button type="submit" class="btn btn-primary">Confirm</button>
+</form>

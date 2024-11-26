@@ -34,10 +34,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Web Projects/The-Tech-Academy-CarInsurance-Assignment/CarInsurance/CarInsurance/Views/Insurees/Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJlZXNcQWRtaW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Web Projects/The-Tech-Academy-CarInsurance-Assignment/CarInsurance/CarInsurance/Views/Insurees/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJlZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,8 +50,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJlZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Web Projects/The-Tech-Academy-CarInsurance-Assignment/CarInsurance/CarInsurance/Views/Insurees/Preview.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJlZXNcUHJldmlldy5jc2h0bWw=
+[D:/Web Projects/The-Tech-Academy-CarInsurance-Assignment/CarInsurance/CarInsurance/Views/Insurees/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJlZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Web Projects/The-Tech-Academy-CarInsurance-Assignment/CarInsurance/CarInsurance/Views/Shared/Error.cshtml]

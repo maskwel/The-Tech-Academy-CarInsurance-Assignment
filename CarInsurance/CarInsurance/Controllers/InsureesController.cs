@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CarInsurance.Data;
+﻿using CarInsurance.Data;
 using CarInsurance.Models;
+using CarInsurance.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
 
 namespace CarInsurance.Controllers
 {
@@ -20,7 +17,7 @@ namespace CarInsurance.Controllers
         }
 
         // GET: Insurees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Admin()
         {
             return View(await _context.Insurees.ToListAsync());
         }
@@ -54,16 +51,74 @@ namespace CarInsurance.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarModel,DUI,SpeedingTickets,CoverageType,Quote")] Insuree insuree)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarModel,DUI,SpeedingTickets,CoverageType,Quote")] ViewInsuree viewInsuree)
         {
             if (ModelState.IsValid)
             {
-                insuree.Id = Guid.NewGuid();
+                var insuree = new Insuree
+                {
+                    FirstName = viewInsuree.FirstName,
+                    LastName = viewInsuree.LastName,
+                    EmailAddress = viewInsuree.EmailAddress,
+                    DateOfBirth = viewInsuree.DateOfBirth,
+                    CarYear = viewInsuree.CarYear,
+                    CarMake = viewInsuree.CarMake,
+                    CarModel = viewInsuree.CarModel,
+                    DUI = viewInsuree.DUI,
+                    SpeedingTickets = viewInsuree.SpeedingTickets,
+                    CoverageType = viewInsuree.CoverageType,
+                    Quote = viewInsuree.Quote,
+                    Id = Guid.NewGuid()
+                };
+
                 _context.Add(insuree);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(insuree);
+            return View("Preview", viewInsuree);
+        }
+
+        [HttpPost]
+        public IActionResult Preview([Bind("FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarModel,DUI,SpeedingTickets,CoverageType,Quote")] ViewInsuree viewInsuree)
+        {
+            if (ModelState.IsValid)
+            {
+                // Calculating quote
+                decimal baseQuote = 50;
+                int age = DateTime.Now.Year - viewInsuree.DateOfBirth.Year; // Calculating age
+                if (viewInsuree.DateOfBirth.Date > DateTime.Now.AddYears(-age)) { age--; } // Adjust for birth date not having occurred yet this year
+
+                // Adjust qoute based on age
+                if (age <= 18) { baseQuote += 100; }
+                else if (age >= 19 && age <= 25) { baseQuote += 50; }
+                else baseQuote += 25;
+
+                // Adjust quote based on car's age
+                if (viewInsuree.CarYear.Year < 2000) { baseQuote += 25; }
+                else if (viewInsuree.CarYear.Year > 2015) { baseQuote += 25; }
+
+                //Adjust quote based on car's make
+                if (viewInsuree.CarMake == "Porsche")
+                {
+                    baseQuote += 25;
+                    if (viewInsuree.CarModel == "911 Carrera") { baseQuote += 25; }
+                }
+
+                //Adjust quote based on speeding tickets
+                baseQuote += viewInsuree.SpeedingTickets * 10;
+
+                //Adjust quote based on DUI
+                baseQuote += viewInsuree.DUI ? baseQuote * (decimal)0.25 : 0;
+
+                //Adjust quote based on coverege type
+                if (viewInsuree.CoverageType == "Full") { baseQuote += baseQuote * (decimal)0.5; }
+
+                viewInsuree.Quote = baseQuote;
+
+                // pass data to the confirmation view
+                return View(viewInsuree);
+            }
+            return View("Create", viewInsuree);
         }
 
         // GET: Insurees/Edit/5

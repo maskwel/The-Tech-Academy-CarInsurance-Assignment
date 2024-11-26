@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Web Projects\\The-Tech-Academy-.Net-MVC\\CarInsurance\\CarInsurance\\CarInsurance.csproj": {}
+    "D:\\Web Projects\\The-Tech-Academy-CarInsurance-Assignment\\CarInsurance\\CarInsurance\\CarInsurance.csproj": {}
   },
   "projects": {
-    "D:\\Web Projects\\The-Tech-Academy-.Net-MVC\\CarInsurance\\CarInsurance\\CarInsurance.csproj": {
+    "D:\\Web Projects\\The-Tech-Academy-CarInsurance-Assignment\\CarInsurance\\CarInsurance\\CarInsurance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Web Projects\\The-Tech-Academy-.Net-MVC\\CarInsurance\\CarInsurance\\CarInsurance.csproj",
+        "projectUniqueName": "D:\\Web Projects\\The-Tech-Academy-CarInsurance-Assignment\\CarInsurance\\CarInsurance\\CarInsurance.csproj",
         "projectName": "CarInsurance",
-        "projectPath": "D:\\Web Projects\\The-Tech-Academy-.Net-MVC\\CarInsurance\\CarInsurance\\CarInsurance.csproj",
+        "projectPath": "D:\\Web Projects\\The-Tech-Academy-CarInsurance-Assignment\\CarInsurance\\CarInsurance\\CarInsurance.csproj",
         "packagesPath": "C:\\Users\\Makswel\\.nuget\\packages\\",
-        "outputPath": "D:\\Web Projects\\The-Tech-Academy-.Net-MVC\\CarInsurance\\CarInsurance\\obj\\",
+        "outputPath": "D:\\Web Projects\\The-Tech-Academy-CarInsurance-Assignment\\CarInsurance\\CarInsurance\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -66,7 +66,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.7, )"
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

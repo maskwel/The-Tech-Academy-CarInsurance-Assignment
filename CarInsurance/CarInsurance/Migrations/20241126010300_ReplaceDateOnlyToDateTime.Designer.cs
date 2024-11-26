@@ -4,6 +4,7 @@ using CarInsurance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarInsurance.Migrations
 {
     [DbContext(typeof(CarInsuranceDbContext))]
-    partial class CarInsuranceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241126010300_ReplaceDateOnlyToDateTime")]
+    partial class ReplaceDateOnlyToDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,8 +58,8 @@ namespace CarInsurance.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Quote")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Quote")
+                        .HasColumnType("int");
 
                     b.Property<int>("SpeedingTickets")
                         .HasColumnType("int");
